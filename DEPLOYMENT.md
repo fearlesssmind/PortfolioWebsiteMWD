@@ -4,9 +4,9 @@ De site draait in de resource group `rg-mawadda`. De resources staan in Sweden C
 
 | Onderdeel | Azure-resource | Adres |
 |---|---|---|
-| Publieke site (`UI/`) | Static Web App `swa-mawadda-ui` (Free) | https://www.mawadda.nl |
-| Admin-site (`UIAdmin/`) | Static Web App `swa-mawadda-admin` (Free) | https://admin.mawadda.nl |
-| API (root, .NET) | Container App `ca-mawadda-api` (0–1 replica) | https://api.mawadda.nl |
+| Publieke site (`UI/`) | Static Web App `swa-mawadda-ui` (Free) | https://www.mawadda-alkhorchani.nl |
+| Admin-site (`UIAdmin/`) | Static Web App `swa-mawadda-admin` (Free) | https://admin.mawadda-alkhorchani.nl |
+| API (root, .NET) | Container App `ca-mawadda-api` (0–1 replica) | https://api.mawadda-alkhorchani.nl |
 | Database | PostgreSQL Flexible Server, Burstable B1ms | — |
 | Geüploade afbeeldingen | Storage account, container `images` | — |
 
@@ -35,7 +35,7 @@ Onder *Settings → Secrets and variables → Actions*:
 
 1. Merge naar `master`. De eerste run stopt met de melding dat de API-image privé is: zet het package `portfoliowebsite-api` op **Public** (link staat in de foutmelding) en klik op *Re-run failed jobs*.
 2. Zet de DNS-records uit het overzicht van de run bij je DNS-provider.
-3. Voeg in Firebase (*Authentication → Settings → Authorized domains*) het tijdelijke admin-adres en `admin.mawadda.nl` toe.
+3. Voeg in Firebase (*Authentication → Settings → Authorized domains*) het tijdelijke admin-adres en `admin.mawadda-alkhorchani.nl` toe.
 4. Start **Domeinen koppelen**, en daarna nog één keer **Deploy naar Azure**.
 
 ## Lokaal ontwikkelen
