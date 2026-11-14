@@ -6,13 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       include_apex:
-        description: "Ook mawadda.nl zelf koppelen (alleen als je DNS-provider ALIAS/ANAME ondersteunt)"
+        description: "Ook mawadda-alkhorchani.nl zelf koppelen (alleen als je DNS-provider ALIAS/ANAME ondersteunt)"
         type: boolean
         default: false
 
 env:
   RESOURCE_GROUP: rg-mawadda
-  DOMAIN: mawadda.nl
+  DOMAIN: mawadda-alkhorchani.nl
   UI_SITE: swa-mawadda-ui
   ADMIN_SITE: swa-mawadda-admin
   API_APP: ca-mawadda-api
@@ -55,13 +55,13 @@ jobs:
             exit 1
           fi
 
-      - name: www.mawadda.nl koppelen aan de publieke site
+      - name: www.mawadda-alkhorchani.nl koppelen aan de publieke site
         run: az staticwebapp hostname set -n "$UI_SITE" -g "$RESOURCE_GROUP" --hostname "www.${DOMAIN}"
 
-      - name: admin.mawadda.nl koppelen aan de admin-site
+      - name: admin.mawadda-alkhorchani.nl koppelen aan de admin-site
         run: az staticwebapp hostname set -n "$ADMIN_SITE" -g "$RESOURCE_GROUP" --hostname "admin.${DOMAIN}"
 
-      - name: api.mawadda.nl koppelen aan de API (met gratis certificaat)
+      - name: api.mawadda-alkhorchani.nl koppelen aan de API (met gratis certificaat)
         run: |
           az extension add --name containerapp --upgrade --only-show-errors -y >/dev/null
           existing=$(az containerapp hostname list -n "$API_APP" -g "$RESOURCE_GROUP" \

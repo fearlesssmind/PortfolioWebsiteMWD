@@ -1,4 +1,4 @@
-// Infrastructuur voor mawadda.nl, uitgerold in één resource group.
+// Infrastructuur voor mawadda-alkhorchani.nl, uitgerold in één resource group.
 // Wordt aangeroepen door .github/workflows/deploy.yml.
 //
 // Kostenplafonds die hier bewust zijn ingebouwd:
@@ -23,7 +23,7 @@ param staticWebAppLocation string = 'westeurope'
 param prefix string = 'mawadda'
 
 @description('Het eigen domein.')
-param domain string = 'mawadda.nl'
+param domain string = 'mawadda-alkhorchani.nl'
 
 @description('Volledige naam van de API-image, bijv. ghcr.io/mawaddahr/portfoliowebsite-api:<sha>.')
 param apiImage string
@@ -41,7 +41,7 @@ param firebaseProjectId string = 'portfoliowebsite-admin-7f818'
 @description('Komma-gescheiden e-mailadressen die content mogen wijzigen.')
 param adminEmails string
 
-@description('Eigen domein voor de API (bijv. api.mawadda.nl). Leeg tot het domein gekoppeld is.')
+@description('Eigen domein voor de API (bijv. api.mawadda-alkhorchani.nl). Leeg tot het domein gekoppeld is.')
 param apiCustomDomain string = ''
 
 @description('ID van het beheerde certificaat voor apiCustomDomain. De workflow zoekt dit zelf op, zodat een nieuwe deploy de domeinkoppeling niet weghaalt.')
