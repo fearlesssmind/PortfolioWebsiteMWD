@@ -1,6 +1,6 @@
 # Hosting op Azure
 
-De site draait in de resource group `rg-mawadda` (West Europe):
+De site draait in de resource group `rg-mawadda`. De resources staan in Sweden Central, de Static Web Apps in East US 2 (West Europe accepteert geen nieuwe klanten). Andere regio's kun je kiezen met de repo-variabelen `AZURE_LOCATION` en `SWA_LOCATION`.
 
 | Onderdeel | Azure-resource | Adres |
 |---|---|---|
