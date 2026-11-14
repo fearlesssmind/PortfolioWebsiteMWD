@@ -72,14 +72,14 @@ jobs:
           TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           PG_PASSWORD: ${{ secrets.POSTGRES_ADMIN_PASSWORD }}
-          ADMIN_EMAILS: ${{ vars.ADMIN_EMAILS }}
+          ADMIN_EMAILS: ${{ vars.ADMIN_EMAILS || secrets.ADMIN_EMAILS }}
         run: |
           missing=""
           [ -z "$CLIENT_ID" ] && missing="$missing AZURE_CLIENT_ID(secret)"
           [ -z "$TENANT_ID" ] && missing="$missing AZURE_TENANT_ID(secret)"
           [ -z "$SUBSCRIPTION_ID" ] && missing="$missing AZURE_SUBSCRIPTION_ID(secret)"
           [ -z "$PG_PASSWORD" ] && missing="$missing POSTGRES_ADMIN_PASSWORD(secret)"
-          [ -z "$ADMIN_EMAILS" ] && missing="$missing ADMIN_EMAILS(variable)"
+          [ -z "$ADMIN_EMAILS" ] && missing="$missing ADMIN_EMAILS(variable of secret)"
           if [ -n "$missing" ]; then
             echo "::error::Ontbrekende instellingen onder Settings → Secrets and variables → Actions:$missing"
             exit 1
@@ -126,7 +126,7 @@ jobs:
         env:
           IMAGE: ${{ needs.api-image.outputs.image }}
           PG_PASSWORD: ${{ secrets.POSTGRES_ADMIN_PASSWORD }}
-          ADMIN_EMAILS: ${{ vars.ADMIN_EMAILS }}
+          ADMIN_EMAILS: ${{ vars.ADMIN_EMAILS || secrets.ADMIN_EMAILS }}
           PG_LOCATION: ${{ vars.POSTGRES_LOCATION || 'westeurope' }}
           CERT_ID: ${{ steps.domain.outputs.cert_id }}
         run: |
