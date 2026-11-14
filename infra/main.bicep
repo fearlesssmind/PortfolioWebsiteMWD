@@ -101,7 +101,8 @@ resource imagesContainer 'Microsoft.Storage/storageAccounts/blobServices/contain
 // ---------- Database ----------
 
 resource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2024-08-01' = {
-  name: 'psql-${prefix}-${suffix}'
+  // Regio zit in de naam, zodat wisselen van regio nooit botst met een oude (mislukte) server
+  name: 'psql-${prefix}-${uniqueString(resourceGroup().id, postgresLocation)}'
   location: postgresLocation
   sku: {
     name: 'Standard_B1ms'
